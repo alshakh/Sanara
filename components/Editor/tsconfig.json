@@ -1,0 +1,16 @@
+{
+    "compileOnSave": false,
+    "version": "1.5.0-alpha",
+    "compilerOptions": {
+        "target": "es5"
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./declareFiles/coreLib.d.ts",
+        "./lib.ts",
+        "./src/Editor.ts"
+    ]
+}

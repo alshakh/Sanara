@@ -1,0 +1,1 @@
+../../declareFiles/coreLib.d.ts

@@ -1,0 +1,17 @@
+{
+    "compileOnSave": false,
+    "version": "1.5.0-alpha",
+    "compilerOptions": {
+        "target": "es5"
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./lib.ts",
+        "./src/Core.ts",
+        "./src/Fragment.ts",
+        "./src/Paper.ts"
+    ]
+}
