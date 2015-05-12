@@ -5,6 +5,9 @@ declare module Sanara.Std {
         private lefty;
         private righty;
         constructor(children: Sanara.Core.Fragment[]);
+        private calcWidth();
+        private calcHeight();
+        private calcNodePivot();
         paintImplementation(context: Sanara.Core.SanaraContext): void;
     }
     class Circle extends Sanara.Core.Fragment {
@@ -18,6 +21,8 @@ declare module Sanara.Std {
         private color;
         private child;
         constructor(children: Sanara.Core.Fragment[], parameters: Sanara.Core.Value[]);
+        private calcWidth();
+        private calcHeight();
         paintImplementation(context: Sanara.Core.SanaraContext): void;
     }
 }

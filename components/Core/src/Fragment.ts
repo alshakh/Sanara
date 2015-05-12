@@ -4,10 +4,7 @@
 
 
 module Sanara.Core {
-    /**
-    valueGetter because properties will change over time!.
-    */
-    export type Property = {name:string, getter:ValueGetter};
+    export type Property = {name:string, value:Value};
     /**
     Type of Fragment classes. FragmentTemplate is a class that extends Fragment
     */
@@ -39,10 +36,10 @@ module Sanara.Core {
             }
 
             if(! this.hasProperty("width")) {
-                this.properties.push({name:"width", getter:Fragment.ZERO_GETTER});
+                this.properties.push({name:"width",value: Value.ZERO});
             }
             if(! this.hasProperty("height")) {
-                this.properties.push({name:"height", getter:Fragment.ZERO_GETTER})
+                this.properties.push({name:"height", value: Value.ZERO})
             }
         }
 
@@ -53,31 +50,41 @@ module Sanara.Core {
         }
         paintImplementation(context : SanaraContext) {}
 
-        hasProperty(name:string) : boolean{
+        private getPropertyByName(name:string) : Property {
             for(var i = 0 ; i < this.properties.length ; i++) {
                 if(this.properties[i].name === name) {
-                    return true;
+                    return this.properties[i];
                 }
             }
-            return false;
+            return null;
         }
-        /**
-        fragment must have the property Or unexpected results
-        */
-        getPropertyValue(name:string) : Value {
-            for(var i = 0 ; i < this.properties.length ; i++) {
-                if(this.properties[i].name === name) {
-                    return this.properties[i].getter();
+        hasProperty(name:string) : boolean {
+            return ( this.getPropertyByName(name) === null ? false : true);
+        }
+        getPropertyValue(name:string, onError?: (string?)=>Value) : Value {
+            var p = this.getPropertyByName(name);
+            if(p === null){
+                if(onError) {
+                    return onError(name);
+                } else {
+                    return Value.ZERO;
                 }
             }
-            return Value.ZERO;
+            return p.value;
+        }
+        setPropertyValue(name:string, value: Value) : void {
+            //does not add if not exist
+            var p = this.getPropertyByName(name);
+            if(p !== null) {
+                p.value = value;
+            }
         }
 
         width() : number {
-            return this.getPropertyValue("width").toNumber();
+            return this.getPropertyValue("width", ()=>Value.ZERO).toNumber();
         }
         height() : number {
-            return this.getPropertyValue("height").toNumber();
+            return this.getPropertyValue("height", ()=>Value.ZERO).toNumber();
         }
     }
 }

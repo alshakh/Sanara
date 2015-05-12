@@ -40,22 +40,22 @@ module Sanara.Std {
 
             var properties = <Sanara.Core.Property[]>[];
 
-            var widthGetter = () => {
-                return new Sanara.Core.Value(Math.max(this.lefty.width()+this.righty.width(),this.content.width()))
-            }
-            properties.push({name:"width",getter:widthGetter});
 
-            var heightGetter = () => {
-                return new Sanara.Core.Value(this.content.height() + Math.max(this.lefty.height(), this.righty.height()));
-            }
-            properties.push({name:"height",getter:heightGetter});
-
-            var nodePivotGetter = () => {
-                return new Sanara.Core.Value(this.lefty.width() + this.content.width()/2);
-            }
-            properties.push({name:"node-pivot",getter:nodePivotGetter});
+            properties.push({name:"node-pivot",value:this.calcNodePivot()});
+            properties.push({name:"width",value:this.calcWidth()});
+            properties.push({name:"height",value:this.calcHeight()});
 
             super(null,null,properties);
+        }
+
+        private calcWidth() : Sanara.Core.Value {
+            return new Sanara.Core.Value(Math.max(this.lefty.width()+this.righty.width(),this.content.width()))
+        }
+        private calcHeight() : Sanara.Core.Value {
+            return new Sanara.Core.Value(this.content.height() + Math.max(this.lefty.height(), this.righty.height()));
+        }
+        private calcNodePivot() : Sanara.Core.Value {
+            return new Sanara.Core.Value(this.lefty.width() + this.content.width()/2);
         }
 
         paintImplementation(context : Sanara.Core.SanaraContext) {
@@ -88,11 +88,11 @@ module Sanara.Std {
                 return Circle.CIRCLE;
             }
 
-            var diameterGetter =function(){return new Sanara.Core.Value(100)};
+            var diameter = new Sanara.Core.Value(100);
 
             super(null,null,[
-                {name:"width",getter: diameterGetter},
-                {name:"height",getter: diameterGetter}
+                {name:"width",value: diameter},
+                {name:"height",value: diameter}
             ]);
         }
 
@@ -135,9 +135,17 @@ module Sanara.Std {
             this.child = children[0];
 
             super(null,null,[
-                {name:"width",getter: ()=>this.child.getPropertyValue("width")},
-                {name:"height",getter: ()=>this.child.getPropertyValue("height")},
+                {name:"width",value:this.calcWidth()},
+                {name:"height",value:this.calcHeight()}
             ]);
+        }
+
+        private calcWidth() {
+            return this.child.getPropertyValue("width");
+        }
+
+        private calcHeight() {
+            return this.child.getPropertyValue("height");
         }
 
         paintImplementation(context: Sanara.Core.SanaraContext) {

@@ -28,7 +28,6 @@ declare module Sanara.Core {
 /**
 */
 declare module Sanara.Core {
-    type ValueGetter = () => Value;
     type ValueInput = number | boolean | string;
     class Value {
         static ZERO: Value;
@@ -46,12 +45,9 @@ declare module Sanara.Core {
     }
 }
 declare module Sanara.Core {
-    /**
-    valueGetter because properties will change over time!.
-    */
     type Property = {
         name: string;
-        getter: ValueGetter;
+        value: Value;
     };
     /**
     Type of Fragment classes. FragmentTemplate is a class that extends Fragment
@@ -81,11 +77,10 @@ declare module Sanara.Core {
         constructor(children: Fragment[], parameters: Value[], properties?: Property[]);
         paint(context: SanaraContext): void;
         paintImplementation(context: SanaraContext): void;
+        private getPropertyByName(name);
         hasProperty(name: string): boolean;
-        /**
-        fragment must have the property Or unexpected results
-        */
-        getPropertyValue(name: string): Value;
+        getPropertyValue(name: string, onError?: (string?) => Value): Value;
+        setPropertyValue(name: string, value: Value): void;
         width(): number;
         height(): number;
     }

@@ -1,7 +1,6 @@
 /**
 */
 module Sanara.Core {
-    export type ValueGetter = () => Value;
     export type ValueInput = number|boolean|string;
     export class Value {
         //numbers

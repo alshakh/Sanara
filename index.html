@@ -10,8 +10,9 @@
         var dict = Sanara.Std.dictionary;
         console.log(dict.listNames());
         //
-        var c = Sanara.Std.Circle();
-        var btree = new Sanara.Std.Bitree([c,c,c]);
+        var c = new Sanara.Std.Circle();
+        var redC = new Sanara.Std.FillColor([c],[new Sanara.Core.Value("#ff0000")]);
+        var btree = new Sanara.Std.Bitree([c,c,redC]);
         btree = new Sanara.Std.Bitree([c,btree,btree]);
         paper.root = btree;
         paper.repaint();
