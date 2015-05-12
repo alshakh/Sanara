@@ -1,9 +1,7 @@
-/// <reference path="Fragment.ts"/>
-/// <reference path="Dictionary.ts"/>
+/// <reference path="../declareFiles/coreLib.d.ts"/>
 
 
 module Sanara.Std {
-
     export class Bitree extends Sanara.Core.Fragment {
         static doc:Sanara.Core.FragmentClassDoc = {
             name : "bitree",
@@ -147,14 +145,4 @@ module Sanara.Std {
             this.child.paint(context);
         }
     }
-
-    export var dictionary : Sanara.Core.Dictionary = (function() {
-        var entries = <Sanara.Core.DictionaryEntry[]>[];
-        //
-        entries.push(Sanara.Std.Circle);
-        entries.push(Sanara.Std.Bitree);
-        entries.push(Sanara.Std.FillColor);
-        //
-        return new Sanara.Core.Dictionary(entries);
-    })();
 }

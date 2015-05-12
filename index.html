@@ -2,13 +2,13 @@
 <html>
     <body>
     <script src="js/coreLib.js"></script>
+    <script src="js/stdLib.js"></script>
     <script>
         var paper = new Sanara.Core.BasicPaper(1000,1000);
         document.body.appendChild(paper.domElement);
         //
         var dict = Sanara.Std.dictionary;
-        var c = new (dict.getEntry("circle"))();
-        console.log((dict.getEntry("circle")).doc);
+        console.log(dict.listNames());
         //
         var c = Sanara.Std.Circle();
         var btree = new Sanara.Std.Bitree([c,c,c]);

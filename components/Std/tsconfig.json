@@ -11,6 +11,6 @@
     "files": [
         "./declareFiles/coreLib.d.ts",
         "./lib.ts",
-        "./src/Rect.ts"
+        "./src/justAnExample.ts"
     ]
 }

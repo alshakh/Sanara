@@ -1,5 +1,5 @@
-OutputName=symbolLib
-SourceFiles=src/Rect.ts
+OutputName=stdLib
+SourceFiles=src/justAnExample.ts
 
 BaseDir=../..
 OutputDir=$(BaseDir)/js

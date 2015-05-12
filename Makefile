@@ -1,15 +1,15 @@
 
 
-all: coreLib
+all: coreLib stdLib
 
-#symbolLib editorLib testsLib
+#editorLib testsLib
 
 
 coreLib:
 	(cd components/Core; make all)
 
-symbolLib:
-	(cd components/Symbol; make all)
+stdLib:
+	(cd components/Std; make all)
 
 editorLib:
 	(cd components/Editor; make all)
