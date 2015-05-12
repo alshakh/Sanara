@@ -11,7 +11,10 @@
     "files": [
         "./lib.ts",
         "./src/Core.ts",
+        "./src/Dictionary.ts",
         "./src/Fragment.ts",
-        "./src/Paper.ts"
+        "./src/Paper.ts",
+        "./src/StandardLibrary.ts",
+        "./src/Value.ts"
     ]
 }

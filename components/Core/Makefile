@@ -1,5 +1,5 @@
 OutputName=coreLib
-SourceFiles=src/Core.ts src/Fragment.ts src/Paper.ts
+SourceFiles=src/Core.ts src/Fragment.ts src/Paper.ts src/Value.ts src/StandardLibrary.ts src/Dictionary.ts
 BaseDir=../..
 OutputDir=$(BaseDir)/js
 Out=$(OutputDir)/$(OutputName).js

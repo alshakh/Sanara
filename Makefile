@@ -1,6 +1,8 @@
 
 
-all: coreLib symbolLib editorLib testsLib
+all: coreLib
+
+#symbolLib editorLib testsLib
 
 
 coreLib:

@@ -2,11 +2,19 @@
 <html>
     <body>
     <script src="js/coreLib.js"></script>
-    <script src="js/symbolLib.js"></script>
-        <script src="js/testsLib.js"></script>
-        <script>
-            document.body.appendChild(Sanara.Tests.simplePaper.domElement);
-            Sanara.Tests.simplePaper.repaint();
-        </script>
+    <script>
+        var paper = new Sanara.Core.BasicPaper(1000,1000);
+        document.body.appendChild(paper.domElement);
+        //
+        var dict = Sanara.Std.dictionary;
+        var c = new (dict.getEntry("circle"))();
+        console.log((dict.getEntry("circle")).doc);
+        //
+        var c = Sanara.Std.Circle();
+        var btree = new Sanara.Std.Bitree([c,c,c]);
+        btree = new Sanara.Std.Bitree([c,btree,btree]);
+        paper.root = btree;
+        paper.repaint();
+    </script>
     </body>
 </html>
