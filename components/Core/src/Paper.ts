@@ -5,7 +5,6 @@ module Sanara.Core {
     export interface Paper {
         domElement : HTMLCanvasElement;
         context : SanaraContext;
-        root : Fragment;
         repaint(time:number) : void;
     }
     export class BasicPaper implements Paper {
