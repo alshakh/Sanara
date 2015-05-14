@@ -12,7 +12,6 @@ declare module Sanara.Core {
     interface Paper {
         domElement: HTMLCanvasElement;
         context: SanaraContext;
-        root: Fragment;
         repaint(time: number): void;
     }
     class BasicPaper implements Paper {

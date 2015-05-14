@@ -11,6 +11,9 @@
     "files": [
         "./declareFiles/coreLib.d.ts",
         "./lib.ts",
-        "./src/justAnExample.ts"
+        "./src/Text.ts",
+        "./src/colors.ts",
+        "./src/justAnExample.ts",
+        "./src/position.ts"
     ]
 }

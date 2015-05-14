@@ -1,13 +1,16 @@
-/// <reference path="./src/justAnExample"/>
+/// <reference path="./declareFiles/coreLib.d.ts"/>
 
+/// <reference path="./src/justAnExample"/>
+/// <reference path="./src/Text.ts"/>
+/// <reference path="./src/colors.ts"/>
+/// <reference path="./src/position.ts"/>
+ 
 module Sanara.Std {
-    export var dictionary : Sanara.Core.Dictionary = (function() {
-        var entries = <Sanara.Core.DictionaryEntry[]>[];
-        //
-        entries.push(Sanara.Std.Circle);
-        entries.push(Sanara.Std.Bitree);
-        entries.push(Sanara.Std.FillColor);
-        //
-        return new Sanara.Core.Dictionary(entries);
-    })();
+    export var dictionary : Core.Dictionary = new Sanara.Core.Dictionary([
+        Circle,
+        Bitree,
+        Text,
+        Background,
+        FillColor
+    ]);
 }
